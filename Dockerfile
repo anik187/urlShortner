@@ -1,10 +1,11 @@
-FROM node:22-alpine
+FROM node:22-alpine AS builder
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
-COPY . /app
 WORKDIR /app
+
+COPY . .
 
 RUN pnpm install --prod
 
