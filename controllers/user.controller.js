@@ -43,7 +43,7 @@ export const loginUser = async (req, res) => {
       return res.status(401).json({ error: `Incorrect password` })
     }
     const token = await generateToken({ id: existingUser.id })
-    return res.status(200).json({ token })
+    return res.status(200).json({ token, id: existingUser.id })
   } catch (e) {
     res.status(500).json({ error: e?.message || e })
   }
